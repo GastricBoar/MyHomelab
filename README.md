@@ -56,3 +56,10 @@ For virtual machines and frequently accessed data, I use a 500 GB SATA SSD that 
 The system boots from a 128 GB NVMe SSD that was included with the motherboard when I purchased it. Since it effectively came bundled with the motherboard, there was little reason to replace it immediately, and it continues to serve its purpose perfectly well.
 
 Long-term goal would be to expand the system with four 12 TB helium-filled drives, providing significantly more capacity for a NAS server; I will be considering a RAID 6 configuration. While it sacrifices usable capacity, RAID 6 can tolerate the failure of two drives simultaneously, which is a worthwile trade-off for a server intended to store important data and operate continuously.
+
+## Networking as of now
+At the moment, networking setup is really miserable. Since I do not yet have a wired connection available in my room, the server relies on a cheap USB Wi-Fi adapter I had laying around.
+
+Providing connectivity to hypervisor and virtual machines was really tricky for a reason: while Ethernet supports multiple MAC addresses behind the same interface, my Wi-Fi dongle only exposes a single MAC address to the router. Proxmox will get a static IP on my router (ex. 192.168.x.x), but virtual machines cannot communicate directly with the network in the same way.
+
+This setup is intended to be temporary. Future plans include deploying MoCA adapters to establish a proper wired connection to the home network, allowing the server's networking capabilities to be fully utilized.
